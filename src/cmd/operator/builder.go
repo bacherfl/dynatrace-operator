@@ -26,6 +26,7 @@ type CommandBuilder struct {
 	operatorManagerProvider  cmdManager.Provider
 	namespace                string
 	podName                  string
+	certManagerSelectors     map[string]string
 	signalHandler            context.Context
 	client                   client.Client
 }
@@ -59,6 +60,11 @@ func (builder CommandBuilder) SetPodName(podName string) CommandBuilder {
 	return builder
 }
 
+func (builder CommandBuilder) SetCertLabelSelector(selectors map[string]string) CommandBuilder {
+	builder.certManagerSelectors = selectors
+	return builder
+}
+
 func (builder CommandBuilder) setSignalHandler(ctx context.Context) CommandBuilder {
 	builder.signalHandler = ctx
 	return builder
@@ -71,7 +77,7 @@ func (builder CommandBuilder) setClient(client client.Client) CommandBuilder {
 
 func (builder CommandBuilder) getOperatorManagerProvider(isDeployedByOlm bool) cmdManager.Provider {
 	if builder.operatorManagerProvider == nil {
-		builder.operatorManagerProvider = NewOperatorManagerProvider(isDeployedByOlm)
+		builder.operatorManagerProvider = NewOperatorManagerProvider(isDeployedByOlm, builder.certManagerSelectors)
 	}
 
 	return builder.operatorManagerProvider

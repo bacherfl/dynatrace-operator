@@ -29,6 +29,7 @@ import (
 	"github.com/Dynatrace/dynatrace-operator/src/logger"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
+
 	ctrl "sigs.k8s.io/controller-runtime"
 )
 
@@ -55,6 +56,9 @@ func createOperatorCommandBuilder() operator.CommandBuilder {
 	return operator.NewOperatorCommandBuilder().
 		SetNamespace(os.Getenv(kubeobjects.EnvPodNamespace)).
 		SetPodName(os.Getenv(kubeobjects.EnvPodName)).
+		SetCertLabelSelector(map[string]string{
+			kubeobjects.EnvCertManagerSelectorKey: kubeobjects.EnvCertManagerSelectorValue,
+		}).
 		SetConfigProvider(cmdConfig.NewKubeConfigProvider())
 }
 

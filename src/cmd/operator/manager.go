@@ -1,6 +1,7 @@
 package operator
 
 import (
+	klt_certs "github.com/Dynatrace/dynatrace-operator/src/controllers/certificates/klt-certs"
 	"os"
 	"strconv"
 	"time"
@@ -69,12 +70,14 @@ func (provider bootstrapManagerProvider) CreateManager(namespace string, config 
 
 type operatorManagerProvider struct {
 	managerBuilder
-	deployedViaOlm bool
+	deployedViaOlm       bool
+	kltCertLabelSelector map[string]string
 }
 
-func NewOperatorManagerProvider(deployedViaOlm bool) cmdManager.Provider {
+func NewOperatorManagerProvider(deployedViaOlm bool, kltCertLabelSelector map[string]string) cmdManager.Provider {
 	return operatorManagerProvider{
-		deployedViaOlm: deployedViaOlm,
+		deployedViaOlm:       deployedViaOlm,
+		kltCertLabelSelector: kltCertLabelSelector,
 	}
 }
 
@@ -105,7 +108,7 @@ func (provider operatorManagerProvider) CreateManager(namespace string, cfg *res
 		return nil, err
 	}
 
-	err = provider.addCertificateController(mgr, namespace)
+	err = provider.addCertificateControllers(mgr, namespace)
 	if err != nil {
 		return nil, err
 	}
@@ -113,9 +116,16 @@ func (provider operatorManagerProvider) CreateManager(namespace string, cfg *res
 	return mgr, nil
 }
 
-func (provider operatorManagerProvider) addCertificateController(mgr manager.Manager, namespace string) error {
+func (provider operatorManagerProvider) addCertificateControllers(mgr manager.Manager, namespace string) error {
 	if !provider.deployedViaOlm {
-		return certificates.Add(mgr, namespace)
+		if err := certificates.Add(mgr, namespace); err != nil {
+			return err
+		}
+	}
+	if provider.kltCertLabelSelector != nil && len(provider.kltCertLabelSelector) > 0 {
+		if err := klt_certs.Add(mgr, namespace, provider.kltCertLabelSelector); err != nil {
+			return err
+		}
 	}
 	return nil
 }

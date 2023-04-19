@@ -232,18 +232,6 @@ func (dk *DynaKube) NeedMetricsServer() bool {
 	return dk.Spec.EnableKeptn
 }
 
-func (dk *DynaKube) CustomOneAgentImage() string {
-	switch {
-	case dk.ClassicFullStackMode():
-		return dk.Spec.OneAgent.ClassicFullStack.Image
-	case dk.HostMonitoringMode():
-		return dk.Spec.OneAgent.HostMonitoring.Image
-	case dk.CloudNativeFullstackMode():
-		return dk.Spec.OneAgent.CloudNativeFullStack.Image
-	}
-	return ""
-}
-
 func (dk *DynaKube) CodeModulesImage() string {
 	if dk.CloudNativeFullstackMode() {
 		return dk.Spec.OneAgent.CloudNativeFullStack.CodeModulesImage
@@ -355,12 +343,6 @@ func (dk *DynaKube) DefaultSyntheticImage() string {
 // CodeModulesVersion provides version set in Status for the CodeModules.
 func (dk *DynaKube) CodeModulesVersion() string {
 	return dk.Status.CodeModules.Version
-}
-
-// CodeModulesImage provides the image reference set in Status for the CodeModules.
-// Format: repo@sha256:digest
-func (dk *DynaKube) CodeModulesImage() string {
-	return dk.Status.CodeModules.ImageID
 }
 
 // CustomCodeModulesImage provides the image reference for the CodeModules provided in the Spec.

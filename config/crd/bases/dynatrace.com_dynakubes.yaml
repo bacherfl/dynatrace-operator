@@ -1524,6 +1524,9 @@ spec:
                 description: If enabled, Istio on the cluster will be configured automatically
                   to allow access to the Dynatrace environment
                 type: boolean
+              enableKeptn:
+                default: false
+                type: boolean
               kubernetesMonitoring:
                 description: 'Deprecated: Configuration for Kubernetes Monitoring'
                 properties:

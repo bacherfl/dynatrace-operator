@@ -31,5 +31,10 @@ func newWebhookCertificateController(mgr manager.Manager, namespace string, canc
 		Log:           ctrl.Log.WithName("KeptnWebhookCert Controller"),
 		Namespace:     namespace,
 		MatchLabels:   matchLabels,
+		Options: kltcert.WebhookCertificateReconcilerOptions{
+			DisableMutatingWebhookConfigurations:   true,
+			DisableValidatingWebhookConfigurations: true,
+			DisableCRDs:                            false,
+		},
 	}
 }

@@ -4,7 +4,7 @@ metadata:
   name: metrics-operator
   namespace: dynatrace
   labels:
-    app.kubernetes.io/part-of: keptn-lifecycle-toolkit
+    app.kubernetes.io/part-of: dt-klt
     control-plane: metrics-operator
 spec:
   selector:

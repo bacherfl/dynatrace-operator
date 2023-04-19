@@ -1,8 +1,9 @@
 # setup build image
 FROM golang:1.20.3 AS go-base
-RUN \
-    --mount=type=cache,target=/var/cache/apt \
-    apt-get update && apt-get install -y libbtrfs-dev libdevmapper-dev
+# TODO uncommentig for now since this step threw an error regarding unsigned packages
+#RUN \
+#    --mount=type=cache,target=/var/cache/apt \
+#    apt-get update && apt-get install -y libbtrfs-dev libdevmapper-dev
 
 # download go dependencies
 FROM go-base AS go-mod

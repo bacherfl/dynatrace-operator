@@ -7,6 +7,7 @@ metadata:
     controller-gen.kubebuilder.io/version: v0.11.3
   labels:
     crdGroup: metrics.keptn.sh
+    app.kubernetes.io/part-of: dt-klt
   name: keptnmetrics.metrics.keptn.sh
 spec:
   group: metrics.keptn.sh

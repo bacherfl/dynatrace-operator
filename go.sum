@@ -101,8 +101,14 @@ github.com/asaskevich/govalidator v0.0.0-20200907205600-7a23bdc65eef/go.mod h1:W
 github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 h1:DklsrG3dyBCFEj5IhUbnKptjxatkF07cF2ak3yi77so=
 github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2/go.mod h1:WaHUgvxTVq04UNunO+XhnAqY/wQc+bxr74GqbsZ/Jqw=
 github.com/aws/aws-sdk-go v1.15.11/go.mod h1:mFuSZ37Z9YOHbQEwBWztmVzqXrEkub65tZoCYDt7FT0=
+github.com/bacherfl/lifecycle-controller v0.0.0-20230420084458-f8929a6973aa h1:nsUHfw/1spQyexzQxOvmX75H24sl7Yss76pSTXbjcvQ=
+github.com/bacherfl/lifecycle-controller v0.0.0-20230420084458-f8929a6973aa/go.mod h1:3w1wnCxSVAc0CH7qvcCY+I+e/+oXpU65DEC68W8QNsQ=
 github.com/bacherfl/lifecycle-controller/klt-cert-manager v0.0.0-20230419115007-2a829181036f h1:3OwbErORawyFN2MCjT00bZ4ei1JXk7etUu9M9SBsCQQ=
 github.com/bacherfl/lifecycle-controller/klt-cert-manager v0.0.0-20230419115007-2a829181036f/go.mod h1:hiEARjuoR1ImM8tHUdAuG+VmvufYoHtSoeFTF5FSEJ0=
+github.com/bacherfl/lifecycle-controller/klt-cert-manager v0.0.0-20230420084458-f8929a6973aa h1:6D5UWEyCn619tNfWiQkD/tHqpVEHH64DXmPREA8kDQ4=
+github.com/bacherfl/lifecycle-controller/klt-cert-manager v0.0.0-20230420084458-f8929a6973aa/go.mod h1:hiEARjuoR1ImM8tHUdAuG+VmvufYoHtSoeFTF5FSEJ0=
+github.com/bacherfl/lifecycle-controller/klt-cert-manager v0.0.0-20230420085654-637a0dc5fcdb h1:jLSpiT8gbn8hl4YeS1hw8l+hDjnXEbGpXFtSk74qw9E=
+github.com/bacherfl/lifecycle-controller/klt-cert-manager v0.0.0-20230420085654-637a0dc5fcdb/go.mod h1:hiEARjuoR1ImM8tHUdAuG+VmvufYoHtSoeFTF5FSEJ0=
 github.com/benbjohnson/clock v1.1.0 h1:Q92kusRqC1XV2MjkWETPvjJVqKetz1OzxZB7mHJLju8=
 github.com/benbjohnson/clock v1.1.0/go.mod h1:J11/hYXuz8f4ySSvYwY0FKfm+ezbsZBKZxNJlLklBHA=
 github.com/beorn7/perks v0.0.0-20160804104726-4c0e84591b9a/go.mod h1:Dwedo/Wpr24TaqPxmxbtue+5NUziq4I4S80YR8gNf3Q=

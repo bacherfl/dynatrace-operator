@@ -158,4 +158,4 @@ require (
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
 )
 
-replace github.com/keptn/lifecycle-toolkit/klt-cert-manager => github.com/bacherfl/lifecycle-controller/klt-cert-manager v0.0.0-20230419115007-2a829181036f
+replace github.com/keptn/lifecycle-toolkit/klt-cert-manager => github.com/bacherfl/lifecycle-controller/klt-cert-manager v0.0.0-20230420085654-637a0dc5fcdb

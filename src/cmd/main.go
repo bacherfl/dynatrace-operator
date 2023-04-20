@@ -29,6 +29,7 @@ import (
 	"github.com/Dynatrace/dynatrace-operator/src/logger"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
+
 	ctrl "sigs.k8s.io/controller-runtime"
 )
 
@@ -52,10 +53,17 @@ func createWebhookCommandBuilder() webhook.CommandBuilder {
 }
 
 func createOperatorCommandBuilder() operator.CommandBuilder {
-	return operator.NewOperatorCommandBuilder().
+	builder := operator.NewOperatorCommandBuilder().
 		SetNamespace(os.Getenv(kubeobjects.EnvPodNamespace)).
 		SetPodName(os.Getenv(kubeobjects.EnvPodName)).
 		SetConfigProvider(cmdConfig.NewKubeConfigProvider())
+
+	if os.Getenv(kubeobjects.EnvCertManagerSelectorKey) != "" && os.Getenv(kubeobjects.EnvCertManagerSelectorValue) != "" {
+		builder = builder.SetCertLabelSelector(map[string]string{
+			os.Getenv(kubeobjects.EnvCertManagerSelectorKey): os.Getenv(kubeobjects.EnvCertManagerSelectorValue),
+		})
+	}
+	return builder
 }
 
 func createCsiServerCommandBuilder() csiServer.CommandBuilder {

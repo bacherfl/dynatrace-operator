@@ -37,6 +37,38 @@ rules:
       - list
       - watch
       - update
+  # - apiGroups:
+  #     - apiregistration.k8s.io
+  #   resources:
+  #     - apiservices
+  #   verbs:
+  #     - create
+  #     - update
+  #     - delete
+  #     - get
+  #     - list
+  #     - watch
+  - apiGroups:
+      - apps
+    resources:
+      - replicasets
+      - deployments
+    verbs:
+      - get
+      - list
+      - watch
+      - update
+  # - apiGroups:
+  #     - ""
+  #   resources:
+  #     - services
+  #   verbs:
+  #     - create
+  #     - update
+  #     - delete
+  #     - get
+  #     - list
+  #     - watch
   - apiGroups:
       - ""
     resources:
@@ -90,6 +122,46 @@ rules:
     verbs:
       - get
       - update
+
+
+  - apiGroups:
+      - admissionregistration.k8s.io
+    resources:
+      - mutatingwebhookconfigurations
+    verbs:
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - admissionregistration.k8s.io
+    resources:
+      - validatingwebhookconfigurations
+    verbs:
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - apiextensions.k8s.io
+    resources:
+      - customresourcedefinitions
+    verbs:
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - apps
+    resources:
+      - deployments
+    verbs:
+      - get
+      - list
+      - watch
   {{- if eq (default false .Values.olm) true}}
   - apiGroups:
       - security.openshift.io

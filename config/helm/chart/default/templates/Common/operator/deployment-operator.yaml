@@ -64,6 +64,10 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
+            - name: CERT_MANAGER_SELECTOR_KEY
+              value: app.kubernetes.io/part-of
+            - name: CERT_MANAGER_SELECTOR_VALUE
+              value: dt-klt
           ports:
             - containerPort: 10080
               name: server-port

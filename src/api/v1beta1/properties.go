@@ -228,6 +228,19 @@ func (dk *DynaKube) NeedAppInjection() bool {
 	return dk.CloudNativeFullstackMode() || dk.ApplicationMonitoringMode()
 }
 
+func (dk *DynaKube) NeedMetricsServer() bool {
+	return dk.Spec.EnableKeptn
+}
+
+func (dk *DynaKube) CodeModulesImage() string {
+	if dk.CloudNativeFullstackMode() {
+		return dk.Spec.OneAgent.CloudNativeFullStack.CodeModulesImage
+	} else if dk.ApplicationMonitoringMode() && dk.NeedsCSIDriver() {
+		return dk.Spec.OneAgent.ApplicationMonitoring.CodeModulesImage
+	}
+	return ""
+}
+
 func (dk *DynaKube) InitResources() *corev1.ResourceRequirements {
 	if dk.ApplicationMonitoringMode() {
 		return &dk.Spec.OneAgent.ApplicationMonitoring.InitResources
@@ -330,12 +343,6 @@ func (dk *DynaKube) DefaultSyntheticImage() string {
 // CodeModulesVersion provides version set in Status for the CodeModules.
 func (dk *DynaKube) CodeModulesVersion() string {
 	return dk.Status.CodeModules.Version
-}
-
-// CodeModulesImage provides the image reference set in Status for the CodeModules.
-// Format: repo@sha256:digest
-func (dk *DynaKube) CodeModulesImage() string {
-	return dk.Status.CodeModules.ImageID
 }
 
 // CustomCodeModulesImage provides the image reference for the CodeModules provided in the Spec.

@@ -7,8 +7,10 @@ import (
 )
 
 const (
-	EnvPodNamespace = "POD_NAMESPACE"
-	EnvPodName      = "POD_NAME"
+	EnvPodNamespace             = "POD_NAMESPACE"
+	EnvPodName                  = "POD_NAME"
+	EnvCertManagerSelectorKey   = "CERT_MANAGER_SELECTOR_KEY"
+	EnvCertManagerSelectorValue = "CERT_MANAGER_SELECTOR_VALUE"
 )
 
 func FindEnvVar(envVars []corev1.EnvVar, name string) *corev1.EnvVar {

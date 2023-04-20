@@ -7,6 +7,7 @@ require (
 	github.com/containers/image/v5 v5.25.0
 	github.com/evanphx/json-patch v5.6.0+incompatible
 	github.com/go-logr/logr v1.2.4
+	github.com/keptn/lifecycle-toolkit/klt-cert-manager v0.0.0-20230418073313-c9b1a42df8a8
 	github.com/klauspost/compress v1.16.4
 	github.com/mattn/go-sqlite3 v1.14.16
 	github.com/opencontainers/go-digest v1.0.0
@@ -156,3 +157,5 @@ require (
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
 )
+
+replace github.com/keptn/lifecycle-toolkit/klt-cert-manager => github.com/bacherfl/lifecycle-controller/klt-cert-manager v0.0.0-20230420085654-637a0dc5fcdb

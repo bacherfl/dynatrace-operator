@@ -38,7 +38,7 @@ spec:
         - --adapter-port=6443
           # Log level for the metrics adapter
         - --v=10
-        image: odubajdt/metrics-operator:main-without-webhook-fix
+        image: docker.io/bacherfl/metrics-operator:0.8.0.next.1
         name: manager
         env:
           - name: POD_NAMESPACE
